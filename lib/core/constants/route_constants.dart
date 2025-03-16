@@ -25,4 +25,8 @@ class RouteConstants {
   static const String mindfulnessDetails = '/mindfulness/:id';
   static const String addMindfulnessSession = '/mindfulness/add';
   static const String editMindfulnessSession = '/mindfulness/edit/:id';
+  
+  // Other routes
+  static const String gamification = '/gamification';
+  static const String settings = '/settings';
 }

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../lib/core/constants/route_constants.dart';
+import 'package:zenflow/core/constants/route_constants.dart';
 
 class ZenBottomNav extends StatelessWidget {
   final int currentIndex;
 
-  const ZenBottomNav({
-    Key? key,
-    required this.currentIndex,
-  }) : super(key: key);
+  const ZenBottomNav({Key? key, this.currentIndex = 0}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +16,8 @@ class ZenBottomNav extends StatelessWidget {
       unselectedItemColor: Colors.grey,
       showUnselectedLabels: true,
       items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.task_alt),
-          label: 'Tasks',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.book),
-          label: 'Journal',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.task_alt), label: 'Tasks'),
+        BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Journal'),
         BottomNavigationBarItem(
           icon: Icon(Icons.self_improvement),
           label: 'Mindfulness',
@@ -35,14 +26,11 @@ class ZenBottomNav extends StatelessWidget {
           icon: Icon(Icons.emoji_events),
           label: 'Achievements',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Settings',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
       ],
       onTap: (index) {
         if (index == currentIndex) return;
-        
+
         switch (index) {
           case 0:
             context.go(RouteConstants.tasks);

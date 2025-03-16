@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/models/task_model.dart';
 import '../providers/task_notifier.dart';
-import '../../../../../../../lib/features/auth/presentation/providers/auth_provider.dart';
+import 'package:zenflow/features/auth/presentation/providers/auth_provider.dart';
 
 class AddTaskDialog extends ConsumerStatefulWidget {
   const AddTaskDialog({Key? key}) : super(key: key);

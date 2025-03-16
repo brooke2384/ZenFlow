@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/models/task_model.dart';
 import '../../data/repositories/task_repository.dart';
-import '../../../../../../../lib/features/auth/presentation/providers/auth_provider.dart';
+import 'package:zenflow/features/auth/presentation/providers/auth_provider.dart';
 
 class TaskNotifier extends StateNotifier<AsyncValue<List<Task>>> {
   final TaskRepository _repository;

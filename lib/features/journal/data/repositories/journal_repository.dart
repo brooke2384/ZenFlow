@@ -62,6 +62,14 @@ class JournalRepository {
           .toList();
     });
   }
+
+  Future<JournalEntry?> getJournalEntryById(String id) async {
+    final doc = await _journalCollection.doc(id).get();
+    if (doc.exists) {
+      return JournalEntry.fromMap(doc.data()!);
+    }
+    return null;
+  }
 }
 
 final journalRepositoryProvider = Provider<JournalRepository>((ref) {

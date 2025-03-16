@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "642468608078",
+    "firebase_url": "https://zenflow-ceca4-default-rtdb.firebaseio.com",
+    "project_id": "zenflow-ceca4",
+    "storage_bucket": "zenflow-ceca4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642468608078:android:a48108c94ff3926db46b1f",
+        "android_client_info": {
+          "package_name": "com.zenflow.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkYwZbsoJMnydIwRRMQkMy47TcAfLq_wk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

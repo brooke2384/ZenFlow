@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/task_notifier.dart';
 import '../../domain/models/task_model.dart';
-import '../../../../../../../lib/features/tasks/presentation/widgets/task_card.dart';
+import '../widgets/task_card.dart';
 import '../widgets/add_task_dialog.dart';
 import '../../../../widgets/common/zen_app_bar.dart';
 import '../../../../widgets/common/zen_bottom_nav.dart';
@@ -14,7 +14,8 @@ class TasksScreen extends ConsumerStatefulWidget {
   ConsumerState<TasksScreen> createState() => _TasksScreenState();
 }
 
-class _TasksScreenState extends ConsumerState<TasksScreen> with SingleTickerProviderStateMixin {
+class _TasksScreenState extends ConsumerState<TasksScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   bool _isKanbanView = true;
 
@@ -103,17 +104,16 @@ class _TasksScreenState extends ConsumerState<TasksScreen> with SingleTickerProv
             padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
           Expanded(
             child: DragTarget<Task>(
               onAccept: (task) {
                 final updatedTask = task.copyWith(status: status);
-                ref.read(taskNotifierProvider(task.userId).notifier).updateTask(updatedTask);
+                ref
+                    .read(taskNotifierProvider(task.userId).notifier)
+                    .updateTask(updatedTask);
               },
               builder: (context, candidateData, rejectedData) {
                 return ListView.builder(
@@ -145,8 +145,12 @@ class _TasksScreenState extends ConsumerState<TasksScreen> with SingleTickerProv
 
   Widget _buildListView() {
     final pendingTasks = ref.watch(filteredTasksProvider(TaskStatus.pending));
-    final inProgressTasks = ref.watch(filteredTasksProvider(TaskStatus.inProgress));
-    final completedTasks = ref.watch(filteredTasksProvider(TaskStatus.completed));
+    final inProgressTasks = ref.watch(
+      filteredTasksProvider(TaskStatus.inProgress),
+    );
+    final completedTasks = ref.watch(
+      filteredTasksProvider(TaskStatus.completed),
+    );
 
     return DefaultTabController(
       length: 3,
@@ -179,12 +183,12 @@ class _TasksScreenState extends ConsumerState<TasksScreen> with SingleTickerProv
     return tasks.isEmpty
         ? const Center(child: Text('No tasks yet'))
         : ListView.builder(
-            padding: const EdgeInsets.all(8.0),
-            itemCount: tasks.length,
-            itemBuilder: (context, index) {
-              final task = tasks[index];
-              return TaskCard(task: task);
-            },
-          );
+          padding: const EdgeInsets.all(8.0),
+          itemCount: tasks.length,
+          itemBuilder: (context, index) {
+            final task = tasks[index];
+            return TaskCard(task: task);
+          },
+        );
   }
 }

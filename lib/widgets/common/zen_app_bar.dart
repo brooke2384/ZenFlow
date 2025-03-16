@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../lib/core/theme/app_theme.dart';
+import 'package:zenflow/core/theme/app_theme.dart';
+import 'package:zenflow/core/theme/theme_provider.dart';
 
 class ZenAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
@@ -19,12 +20,7 @@ class ZenAppBar extends ConsumerWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
-      title: Text(
-        title,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
       centerTitle: centerTitle,
       elevation: elevation,
       actions: [
@@ -36,10 +32,12 @@ class ZenAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 : Icons.dark_mode,
           ),
           onPressed: () {
-            ref.read(themeModeProvider.notifier).state =
+            final newMode =
                 ref.read(themeModeProvider) == ThemeMode.dark
                     ? ThemeMode.light
                     : ThemeMode.dark;
+            ref.read(themeModeProvider.notifier).state = newMode;
+            saveThemeMode(newMode);
           },
         ),
       ],
